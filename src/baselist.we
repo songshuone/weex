@@ -1,0 +1,142 @@
+<template>
+  <div>
+      <list class="list">
+          <header>
+
+              <div style="background-color: antiquewhite;align-items: center;height: 50px;justify-content: center">
+                  <text style="color:red;font-size: 32">head</text>
+              </div>
+          </header>
+          <refresh class="refresh-view" display="{{refresh_display}}" onrefresh="onrefresh">
+              <loading-indicator class="indicator"></loading-indicator>
+               <text if="{{(refresh_display==='hide')}}">释放刷新</text>
+          </refresh>
+          <cell class="cell" onappear="onapper" ondisappear="ondisappear" repeat="{{rows}}" index="{{$index}}">
+              <div class="item">
+                  <text class="item-title">row {{id}}</text>
+              </div>
+          </cell>
+          <loading class="loading_view" display="{{loading_display}}" onloading="onloading">
+                       <loading-indicator class="indicator"></loading-indicator>
+                       <text if="{{(loading_display==='hide')}}">释放加载更多...</text>
+          </loading>
+
+      </list>
+
+  </div>
+</template>
+<style>
+    .list{
+        height: 1150px;
+    }
+    .item{
+        height: 100px;
+        align-items: center;
+    }
+    .item-title{
+        font-size: 32px;
+        color:chartreuse;
+    }
+    .refresh-view{
+        width: 750px;
+        height: 120px;
+        display: -ms-flex;
+        display: -webkit-flex;
+        display: flex;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .cell{
+        width: 750px;
+    }
+    .loading_view{
+        justify-content: center;
+        flex-direction: column;
+        height: 120px;
+        align-items: center;
+    }
+    .indicator{
+        height: 70px;
+        width: 70px;
+        color:green;
+    }
+</style>
+<script>
+    module.exports = {
+        data: {
+            refresh_display:'hide',
+            loading_display:'hide',
+            rows:[
+                {id:1},
+                {id:2},
+                {id:3},
+                {id:4},
+                {id:5},
+                {id:6},
+                {id:7}, {id:1},
+                {id:2},
+                {id:3},
+                {id:4},
+                {id:5},
+                {id:6},
+                {id:7}, {id:1},
+                {id:2},
+                {id:3},
+                {id:4},
+                {id:5},
+                {id:6},
+                {id:7}, {id:1},
+                {id:2},
+                {id:3},
+                {id:4},
+                {id:5},
+                {id:6},
+                {id:7},{id:6},
+                {id:7}, {id:1},
+                {id:2},
+                {id:3},
+                {id:4},
+                {id:5},
+                {id:6},
+                {id:7},{id:6},
+                {id:7}, {id:1},
+                {id:2},
+                {id:3},
+                {id:4},
+                {id:5},
+                {id:6},
+                {id:7},
+            ],
+        },
+        methods: {
+            onrefresh:function (e) {
+              var self=this;
+                self.refresh_display='show';
+                self.$call('modal','toast',{
+                    'message':'refresh',
+                });
+                this.$call('timer','setTimeout',function () {
+                    self.refresh_display='hide';
+                },3000);
+            },
+            onloading:function (e) {
+                var self=this;
+                self.loading_display='show';
+                self.$call('modal','toast',{
+                    'message':'onloading',
+                });
+              this.$call('timer','setTimeout',function () {
+                    self.loading_display='hide';
+                },3000);
+            },
+
+
+
+
+        }
+    }
+</script>
+

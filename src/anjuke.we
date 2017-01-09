@@ -1,0 +1,34 @@
+<template>
+  <div class="rootView">
+      <div class="navication" style="flex-direction: row;height: 100px;background-color: aqua" >
+          <div style="flex:0.3;background-color: azure;justify-content: center;align-items: center">
+              <text >上海</text>
+
+          </div>
+          //搜索
+          <div style="flex:1;background-color: blanchedalmond;justify-content: center;align-items: center">
+              <div style="flex-direction: row;padding: 5px;background-color: white;justify-content: center;align-items: center;border-color: white;border-width:1px;border-radius: 5px">
+                  <image></image>
+                  <text>搜索范元</text>
+                  <text>二维码</text>
+              </div>
+          </div >
+          //地图
+          <div style="flex:0.3;background-color: darkorange;justify-content: center;align-items: center">
+               <text>地图</text>
+          </div>
+      </div>
+
+  </div>
+</template>
+
+<script>
+    module.exports = {
+        data: {},
+        methods: {}
+    }
+</script>
+
+<style>
+
+</style>

@@ -1,0 +1,20 @@
+<template>
+  <div style="justify-content: center;align-items: center">
+      <div style="align-self: center">
+          <text style="font-size: 60px">我是</text>
+          <text style="font-size: 80px">暴走青年aa</text>
+          <text style="font-size: 40px">1399094187@qq.com</text>
+      </div>
+  </div>
+</template>
+
+<script>
+    module.exports = {
+        data: {},
+        methods: {}
+    }
+</script>
+
+<style>
+
+</style>

@@ -4,6 +4,7 @@
  <div class="container">
 
     <slider class="slider" interval="{{intervalValue}}"auto-play="{{isAutoPlay}}">
+    <!--repeat 接受循环的数组变量  reapeat 内部组件引用数组中某一元素的属性 例如：如下-->
     	<div class="slider-pagers" repeat="{{itemList}}" 
     	onclick="goWeexSite">
     		
@@ -14,9 +15,9 @@
 
 
     </slider>
- 	<div class="cell">
+ 	<div class="cell" if="true">   <!--if="true"  显示组件  false 移除组件-->
  		<image class="thumb" src="http://t.cn/RGE3AJt"></image>
- 		<text class="title"> JavaScript</text>
+ 		<text class="title"> android</text>
  	</div>
  	<div class="cell">
  		<image class="thumb" src="http://t.cn/RGE3AJt"></image>
@@ -29,6 +30,15 @@
  	<div class="cell">
  		<image class="thumb" src="http://t.cn/RGE3AJt"></image>
  		<text class="title"> JavaScript</text>
+ 	</div>
+
+
+ 	<div repeat={{list}}>	
+        <text> No.{{$index+1}}</text>
+ 	</div>
+ 	<div >	
+        <text>{{fullName}}</text>
+        <text onclick="changeName" style="margin-left:10px;">ChangeME</text>
  	</div>
  </div>
 
@@ -64,12 +74,33 @@
         	isShowIndicators:"true",
         	isAutoPlay:"true",
         	itemList:[{title:'JavaScript',pictureUrl:'http://t.cn/RGE3AJt'},{title:'Android',pictureUrl:'http://t.cn/RGE3AJt'},{title:'Java',pictureUrl:'http://t.cn/RGE3AJt'}],
+        	list:[{index:0,nickname:'张三'},{index:0,nickname:'王二'},{index:0,nickname:'里斯'}],
+        	firstName:'John',
+        	lastName:'Smith',
+
         },
         methods:{
         	goWeexSite:function(){
         		this.$openURL('https://www.baidu.com/');
+        	},
+        	changeName:function(){
+        		this.fullName = 'Terry king';
         	}
-        }
+        },
+        //使用computed对字段进行相关的逻辑处理
+         computed:{
+            fullName:{
+            	get: function(){
+            		return this.firstName+' '+this.lastName;
+            	},
+            	set:function(v){
+            		var s = v.split(' ');
+            		this.firstName=s[0];
+            		this.lastName=s[1];
+            	},
+            }
+         }
+
 
 	}
 
