@@ -1,0 +1,55 @@
+<template>
+	<scroller>
+		<div class="name">
+			<text>用户名：</text>
+        <input type="text" name="userName" id="userName" placeholder="请输入用户名" value={{username}} oninput="usernameoninput" style='margin-top: 0px;margin-left: 5px;font-size: 32px;'></input>
+
+		</div>
+        <div class="password">
+        	<text>密码：</text>
+        <input type="password" name="password" placeholder="请输入密码" value={{password}} oninput="passwordoninput" style='margin-top: 0;margin-left: 5;font-size: 32px;'></input>
+        </div>
+        <text value="登陆" onclick="login" style='align-items: center;'>
+        </text>
+	</scroller>
+</template>
+<style>
+	.name{
+		flex-direction: row;
+		margin: 4px;
+	}
+	.password{
+		margin: 4px;
+		flex-direction: row;
+	}
+</style>
+<script>
+	module.exports={
+		data:{
+			root:'dist',
+			username:'',
+			password:'',
+		},
+		ready:function(){
+
+		},
+		methods:{
+			login:function(e){
+               var storage=require('@weex-module/storage');
+               var self=this;
+               var bundlUrl=this.$getConfig().bundlUrl;
+               var url=common.getUrl(bundlUrl,'mainindex.lib','dist');
+               storage.setItem('username',self.username,function(e){
+               	self.$openUrl(url);
+               });
+			},
+		},
+		usernameoninput:function(e){
+         this.username=e.value;
+		},
+		passwordoninput:function(e){
+			this.password=e.value;
+		}
+	}
+
+</script>

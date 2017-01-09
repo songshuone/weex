@@ -1,0 +1,20 @@
+<template>
+	<div>
+		<text class="title" onclick="onClickTile">Hello Weex</text>
+	</div>
+</template>
+<style>
+	.title{color:red;font-size: 25;text-align: center}
+</style>
+<script>
+	module.exports={
+          methods:{
+          	onClickTile:function(e){
+          		console.log(`${e}...`);
+                alert('title is clicked...');
+          	}
+          }
+
+	}
+
+</script>

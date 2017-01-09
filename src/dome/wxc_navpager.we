@@ -1,0 +1,31 @@
+<template>
+  <wxc-navpage 
+	height=55 
+	width=200
+	background-color="red"
+	title="title" title-color="grey" 
+	left-item-title="left" 
+	left-item-color="blue" 
+	right-item-src="http://t.cn/RGE3AJt">
+    
+     <div>
+     	
+     	<text style="font-size:40">text</text>
+     </div>
+    
+  </wxc-navpage>
+</template>
+<script>
+  require('weex-components');
+  module.exports = {
+    created: function() {
+        this.$on('naviBar.rightItem.click',function(e){
+           //handle your click event here.
+        });
+
+        this.$on('naviBar.leftItem.click',function(e){
+          //handle your click event here. 
+        });
+    }
+  }
+</script>   
